@@ -166,9 +166,15 @@ def setup():
     with open("test.cpp", "w") as f:
         f.write(testCode)
 
+def deleteFile():
+    print("Deleting files...")
+    os.system("del mingw64.zip")
+    os.system("del SFML.zip")
+
 if __name__ == "__main__":
     install()
     setup()
+    deleteFile()
 
 # transform to .exe with pyinstaller
 # pyinstaller --onefile --noconsole install.py
