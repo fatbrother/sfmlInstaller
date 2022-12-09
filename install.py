@@ -1,5 +1,6 @@
 import os
 import requests
+from zipfile import ZipFile
 
 env = os.environ
 mingwUrl = "https://github.com/fatbrother/mingw64/archive/refs/heads/main.zip"
@@ -126,27 +127,29 @@ def install():
         print("Downloaded SFML.zip")
 
     # unzip mingw64
-    if not os.path.exists("mingw64"):
-        print("Unzipping mingw64...")
-        os.system("Expand-Archive -Force mingw64.zip -DestinationPath .")
+    if not os.path.exists("C:/mingw64"):
+        print("Unzipping mingw64.zip...")
+        with ZipFile("mingw64.zip", "r") as zipObj:
+            zipObj.extractall()
         print("Unzipped mingw64.zip")
 
     # unzip sfml
-    if not os.path.exists("SFML-2.5.1"):
-        print("Unzipping SFML...")
-        os.system("Expand-Archive -Force SFML.zip -DestinationPath .")
+    if not os.path.exists("C:/SFML-2.5.1"):
+        print("Unzipping SFML.zip...")
+        with ZipFile("SFML.zip", "r") as zipObj:
+            zipObj.extractall()
         print("Unzipped SFML.zip")
 
     # move mingw64 to C:/
     if not os.path.exists("C:/mingw64"):
         print("Moving mingw64 to C:/...")
-        os.system("mv mingw64 C:/")
+        os.system("move mingw64 C:/")
         print("Moved mingw64 to C:/")
 
     # move sfml to C:/
     if not os.path.exists("C:/SFML-2.5.1"):
         print("Moving SFML to C:/...")
-        os.system("mv SFML-2.5.1 C:/")
+        os.system("move SFML-2.5.1 C:/")
         print("Moved SFML to C:/")
 
 def setup():
