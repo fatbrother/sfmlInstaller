@@ -36,7 +36,7 @@ tasks = """
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C++: 建置使用中檔案",
+            "label": "C++: Building file",
             "command": "C:/mingw64/bin/g++.exe",
             "args": [
                 "-g",
@@ -60,7 +60,7 @@ tasks = """
                 "$gcc"
             ],
             "group": "build",
-            "detail": "編譯器: \"C:/mingw64/g++.exe\""
+            "detail": "Compiler: C:/mingw64/g++.exe"
         }
     ]
 }
@@ -94,15 +94,12 @@ int main()
 """
 
 dllList = [
-    "C:/mingw64/lib/libgcc_s_seh-1.dll",
-    "C:/mingw64/lib/libstdc++-6.dll",
-    "C:/mingw64/lib/libwinpthread-1.dll",
-    "C:/SFML-2.5.1/bin/openal32.dll",
-    "C:/SFML-2.5.1/bin/sfml-audio-2.dll",
-    "C:/SFML-2.5.1/bin/sfml-graphics-2.dll",
-    "C:/SFML-2.5.1/bin/sfml-network-2.dll",
-    "C:/SFML-2.5.1/bin/sfml-system-2.dll",
-    "C:/SFML-2.5.1/bin/sfml-window-2.dll",
+    "C:\\SFML-2.5.1\\bin\\openal32.dll",
+    "C:\\SFML-2.5.1\\bin\\sfml-audio-2.dll",
+    "C:\\SFML-2.5.1\\bin\\sfml-graphics-2.dll",
+    "C:\\SFML-2.5.1\\bin\\sfml-network-2.dll",
+    "C:\\SFML-2.5.1\\bin\\sfml-system-2.dll",
+    "C:\\SFML-2.5.1\\bin\\sfml-window-2.dll",
 ]
 
 def install():
@@ -130,7 +127,7 @@ def install():
     if not os.path.exists("C:/mingw64"):
         print("Unzipping mingw64.zip...")
         with ZipFile("mingw64.zip", "r") as zipObj:
-            zipObj.extractall()
+            zipObj.extractall("mingw64")
         print("Unzipped mingw64.zip")
 
     # unzip sfml
