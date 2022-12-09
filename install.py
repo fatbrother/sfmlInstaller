@@ -160,7 +160,7 @@ def setup():
 
     # copy dlls
     for dll in dllList:
-        os.system("cp " + dll + " .")
+        os.system("move " + dll + " .")
 
     # create test.cpp
     with open("test.cpp", "w") as f:
