@@ -175,6 +175,3 @@ if __name__ == "__main__":
     install()
     setup()
     deleteFile()
-
-# transform to .exe with pyinstaller
-# pyinstaller --onefile --noconsole install.py
