@@ -1,5 +1,7 @@
 import os
+import requests
 
+env = os.environ
 mingwUrl = "https://github.com/fatbrother/mingw64/archive/refs/heads/main.zip"
 sfmlUrl = "https://www.sfml-dev.org/files/SFML-2.5.1-windows-gcc-7.3.0-mingw-64-bit.zip"
 c_cpp_properties = """
@@ -103,16 +105,49 @@ dllList = [
 ]
 
 def install():
-    print("Installing SFML...")
-    os.system("wget -O sfml.zip " + sfmlUrl)
-    os.system("unzip sfml.zip")
-    # move SFML to C:/
-    os.system("mv SFML-2.5.1 C:/")
-    print("Installing MinGW...")
-    os.system("wget -O mingw.zip " + mingwUrl)
-    os.system("unzip mingw.zip")
-    # move MinGW to C:/
-    os.system("mv mingw64-main C:/mingw64")
+    # create .vscode folder
+    if not os.path.exists(".vscode"):
+        os.mkdir(".vscode")
+
+    # download mingw64
+    if not os.path.exists("mingw64.zip"):
+        print("Downloading mingw64...")
+        r = requests.get(mingwUrl)
+        with open("mingw64.zip", "wb") as f:
+            f.write(r.content)
+        print("Downloaded mingw64.zip")
+
+    # download sfml
+    if not os.path.exists("SFML.zip"):
+        print("Downloading SFML...")
+        r = requests.get(sfmlUrl)
+        with open("SFML.zip", "wb") as f:
+            f.write(r.content)
+        print("Downloaded SFML.zip")
+
+    # unzip mingw64
+    if not os.path.exists("mingw64"):
+        print("Unzipping mingw64...")
+        os.system("unzip mingw64.zip")
+        print("Unzipped mingw64.zip")
+
+    # unzip sfml
+    if not os.path.exists("SFML-2.5.1"):
+        print("Unzipping SFML...")
+        os.system("unzip SFML.zip")
+        print("Unzipped SFML.zip")
+
+    # copy mingw64 to C:/
+    if not os.path.exists("C:/mingw64"):
+        print("Copying mingw64 to C:/...")
+        os.system("cp -r mingw64 C:/")
+        print("Copied mingw64 to C:/")
+
+    # copy sfml to C:/
+    if not os.path.exists("C:/SFML-2.5.1"):
+        print("Copying SFML to C:/...")
+        os.system("cp -r SFML-2.5.1 C:/")
+        print("Copied SFML to C:/")
     
 
 def setup():
