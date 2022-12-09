@@ -12,7 +12,7 @@ c_cpp_properties = """
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/mingw64/include/c++",
+                "C:/mingw64/mingw64-main/include/c++",
                 "C:/SFML-2.5.1/include"
             ],
             "defines": [
@@ -20,7 +20,7 @@ c_cpp_properties = """
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:/mingw64/bin/g++.exe",
+            "compilerPath": "C:/mingw64/mingw64-main/bin/g++.exe",
             "cStandard": "gnu17",
             "cppStandard": "gnu++20",
             "intelliSenseMode": "windows-gcc-x64"
@@ -37,7 +37,7 @@ tasks = """
         {
             "type": "cppbuild",
             "label": "C++: Building file",
-            "command": "C:/mingw64/bin/g++.exe",
+            "command": "C:/mingw64/mingw64-main/bin/g++.exe",
             "args": [
                 "-g",
                 "${fileDirname}/**.cpp",
@@ -54,13 +54,13 @@ tasks = """
                 "-lsfml-system",
             ],
             "options": {
-                "cwd": "C:/Program Files/mingw64/bin"
+                "cwd": "C:/mingw64/mingw64-main/bin"
             },
             "problemMatcher": [
                 "$gcc"
             ],
             "group": "build",
-            "detail": "Compiler: C:/mingw64/g++.exe"
+            "detail": "Compiler: C:/mingw64/mingw64-main/g++.exe"
         }
     ]
 }
