@@ -169,3 +169,6 @@ def setup():
 if __name__ == "__main__":
     install()
     setup()
+
+# transform to .exe with pyinstaller
+# pyinstaller --onefile --noconsole install.py
